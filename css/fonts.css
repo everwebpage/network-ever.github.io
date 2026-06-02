@@ -209,8 +209,10 @@ hr { border-top: 1px solid var(--border-color); }
 .member-photo {
     width: 100%;
     max-width: 220px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+    height: 240px;
+    object-fit: contain;
+    object-position: center;
+    background: white;
     margin-bottom: 15px;
     border: 1px solid var(--border-color);
     transition: transform var(--transition-speed);
@@ -579,4 +581,30 @@ hr { border-top: 1px solid var(--border-color); }
     .tm-row { flex-direction: column; }
     .tm-col-left, .tm-col-right { width: 100%; padding: 30px; }
     .tm-bg { display: none; }
+}
+
+.member-website {
+    margin-top: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    width: fit-content;
+    color: var(--sand-gold);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.member-website:hover {
+    color: var(--oxford-blue);
+    text-decoration: none;
+}
+
+.member-website-icon {
+    font-size: 0.8em;
+    line-height: 1;
+    transform: translateY(-1px);
+}
+
+.member-section + .member-section {
+    margin-top: 40px;
 }
