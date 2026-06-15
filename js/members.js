@@ -3,35 +3,36 @@ document.addEventListener("DOMContentLoaded", function () {
     const placeholderImage = "img/member/placeholder.png";
 
     const boardContainer = document.getElementById("board-members");
+    const administrationContainer = document.getElementById("administration-members");
     const memberContainer = document.getElementById("network-members");
 
-    if (!boardContainer || !memberContainer) {
-        console.error("Member containers not found. Expected #board-members and #network-members.");
+    if (!boardContainer || !administrationContainer || !memberContainer) {
+        console.error("One or more member containers are missing in member.html.");
         return;
     }
 
-    fetch(csvPath, { cache: "no-store" })
+    fetch(csvPath)
         .then(function (response) {
             if (!response.ok) {
-                throw new Error("Could not load " + csvPath + " (HTTP " + response.status + ")");
+                throw new Error("Could not load " + csvPath);
             }
             return response.text();
         })
         .then(function (csvText) {
             const people = parseCsv(csvText);
 
-            if (!people.length) {
-                boardContainer.innerHTML = '<p class="member-load-message">No entries found in data/members.csv.</p>';
-                memberContainer.innerHTML = "";
-                console.warn("CSV loaded, but no usable entries were found.");
-                return;
-            }
-
             const boardMembers = people
                 .filter(function (person) {
                     return normalize(person.section) === "board";
                 })
-                .sort(sortBoardMembers);
+                .sort(sortByOrderThenMember);
+
+            const administrationMembers = people
+                .filter(function (person) {
+                    const section = normalize(person.section);
+                    return section === "administration" || section === "admin";
+                })
+                .sort(sortByOrderThenMember);
 
             const members = people
                 .filter(function (person) {
@@ -40,18 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 .sort(sortMembers);
 
             renderPeople(boardMembers, boardContainer, "board");
+            renderPeople(administrationMembers, administrationContainer, "admin");
             renderPeople(members, memberContainer, "members");
-
-            if (!boardMembers.length) {
-                boardContainer.innerHTML = '<p class="member-load-message">No board members found. Check the section column in data/members.csv.</p>';
-            }
-
-            if (!members.length) {
-                memberContainer.innerHTML = '<p class="member-load-message">No members found. Check the section column in data/members.csv.</p>';
-            }
         })
         .catch(function (error) {
-            boardContainer.innerHTML = '<p class="member-load-message">Members could not be loaded. Check whether data/members.csv exists.</p>';
+            boardContainer.innerHTML = "<p>Members could not be loaded.</p>";
+            administrationContainer.innerHTML = "";
             memberContainer.innerHTML = "";
             console.error(error);
         });
@@ -96,29 +91,32 @@ document.addEventListener("DOMContentLoaded", function () {
             card.appendChild(role);
             card.appendChild(affiliation);
 
-const website = String(person.website || "").trim();
+            const website = String(person.website || "").trim();
 
-if (website) {
-    const link = document.createElement("a");
-    link.href = website;
-    link.className = "member-website";
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.setAttribute("aria-label", "Open personal website in a new window");
+            if (website) {
+                const link = document.createElement("a");
+                link.href = website;
+                link.className = "member-website";
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                link.setAttribute(
+                    "aria-label",
+                    "Open the personal website of " + (fullName || "this person") + " in a new window"
+                );
 
-    const linkText = document.createElement("span");
-    linkText.textContent = "Personal website";
+                const linkText = document.createElement("span");
+                linkText.textContent = "Personal website";
 
-    const externalIcon = document.createElement("span");
-    externalIcon.className = "member-website-icon";
-    externalIcon.textContent = "↗";
-    externalIcon.setAttribute("aria-hidden", "true");
+                const externalIcon = document.createElement("span");
+                externalIcon.className = "member-website-icon";
+                externalIcon.textContent = "↗";
+                externalIcon.setAttribute("aria-hidden", "true");
 
-    link.appendChild(linkText);
-    link.appendChild(externalIcon);
+                link.appendChild(linkText);
+                link.appendChild(externalIcon);
+                card.appendChild(link);
+            }
 
-    card.appendChild(link);
-}
             container.appendChild(card);
         });
     }
@@ -147,7 +145,7 @@ if (website) {
         return "img/member/" + imageFolder + "/" + cleanImage;
     }
 
-    function sortBoardMembers(a, b) {
+    function sortByOrderThenMember(a, b) {
         const orderA = parseNumber(a.sort_order);
         const orderB = parseNumber(b.sort_order);
 
@@ -166,21 +164,30 @@ if (website) {
             return yearA - yearB;
         }
 
-        const lastNameCompare = String(a.last_name || "").localeCompare(String(b.last_name || ""), "en", {
-            sensitivity: "base"
-        });
+        const lastNameCompare = String(a.last_name || "").localeCompare(
+            String(b.last_name || ""),
+            "en",
+            { sensitivity: "base" }
+        );
 
         if (lastNameCompare !== 0) {
             return lastNameCompare;
         }
 
-        return String(a.first_name || "").localeCompare(String(b.first_name || ""), "en", {
-            sensitivity: "base"
-        });
+        return String(a.first_name || "").localeCompare(
+            String(b.first_name || ""),
+            "en",
+            { sensitivity: "base" }
+        );
     }
 
     function parseNumber(value) {
-        const number = Number(String(value || "").replace(",", "."));
+        const cleanValue = String(value || "").trim();
+        if (!cleanValue) {
+            return 999999;
+        }
+
+        const number = Number(cleanValue);
         return Number.isFinite(number) ? number : 999999;
     }
 
@@ -188,55 +195,23 @@ if (website) {
         return String(value || "").trim().toLowerCase();
     }
 
-    function normalizeHeader(value) {
-        return String(value || "")
+    function detectDelimiter(csvText) {
+        const firstLine = csvText
             .replace(/^\uFEFF/, "")
-            .trim()
-            .toLowerCase()
-            .replace(/\s+/g, "_")
-            .replace(/-/g, "_");
-    }
+            .split(/\r?\n/)
+            .find(function (line) {
+                return line.trim() !== "";
+            }) || "";
 
-    function detectDelimiter(firstLine) {
-        const candidates = [",", ";", "\t"];
-        let bestDelimiter = ",";
-        let bestCount = -1;
+        const semicolonCount = (firstLine.match(/;/g) || []).length;
+        const commaCount = (firstLine.match(/,/g) || []).length;
 
-        candidates.forEach(function (delimiter) {
-            const count = countOutsideQuotes(firstLine, delimiter);
-            if (count > bestCount) {
-                bestCount = count;
-                bestDelimiter = delimiter;
-            }
-        });
-
-        return bestDelimiter;
-    }
-
-    function countOutsideQuotes(text, delimiter) {
-        let count = 0;
-        let insideQuotes = false;
-
-        for (let i = 0; i < text.length; i++) {
-            const char = text[i];
-            const nextChar = text[i + 1];
-
-            if (char === '"' && insideQuotes && nextChar === '"') {
-                i++;
-            } else if (char === '"') {
-                insideQuotes = !insideQuotes;
-            } else if (char === delimiter && !insideQuotes) {
-                count++;
-            }
-        }
-
-        return count;
+        return semicolonCount > commaCount ? ";" : ",";
     }
 
     function parseCsv(csvText) {
-        const cleanText = String(csvText || "").replace(/^\uFEFF/, "");
-        const firstLine = cleanText.split(/\r?\n/)[0] || "";
-        const delimiter = detectDelimiter(firstLine);
+        const delimiter = detectDelimiter(csvText);
+        const cleanText = csvText.replace(/^\uFEFF/, "");
         const rows = [];
         let row = [];
         let cell = "";
@@ -245,7 +220,6 @@ if (website) {
         for (let i = 0; i < cleanText.length; i++) {
             const char = cleanText[i];
             const nextChar = cleanText[i + 1];
-            const code = char.charCodeAt(0);
 
             if (char === '"' && insideQuotes && nextChar === '"') {
                 cell += '"';
@@ -255,14 +229,17 @@ if (website) {
             } else if (char === delimiter && !insideQuotes) {
                 row.push(cell.trim());
                 cell = "";
-            } else if ((code === 10 || code === 13) && !insideQuotes) {
-                if (code === 13 && nextChar && nextChar.charCodeAt(0) === 10) {
+            } else if ((char === "\n" || char === "\r") && !insideQuotes) {
+                if (char === "\r" && nextChar === "\n") {
                     i++;
                 }
+
                 row.push(cell.trim());
+
                 if (row.some(function (entry) { return entry !== ""; })) {
                     rows.push(row);
                 }
+
                 row = [];
                 cell = "";
             } else {
@@ -279,16 +256,18 @@ if (website) {
             return [];
         }
 
-        const headers = rows[0].map(normalizeHeader);
+        const headers = rows[0].map(function (header) {
+            return normalize(header);
+        });
 
         return rows.slice(1).map(function (dataRow) {
             const person = {};
+
             headers.forEach(function (header, index) {
                 person[header] = dataRow[index] || "";
             });
+
             return person;
-        }).filter(function (person) {
-            return person.first_name || person.last_name || person.affiliation;
         });
     }
 });
