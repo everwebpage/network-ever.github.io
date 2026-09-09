@@ -211,7 +211,7 @@ hr { border-top: 1px solid var(--border-color); }
     max-width: 220px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    object-position: center;
+    object-position: 50% 0%;
     background: white;
     margin-bottom: 15px;
     border: 1px solid var(--border-color);
