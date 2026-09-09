@@ -209,8 +209,8 @@ hr { border-top: 1px solid var(--border-color); }
 .member-photo {
     width: 100%;
     max-width: 220px;
-    height: 240px;
-    object-fit: contain;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     object-position: center;
     background: white;
     margin-bottom: 15px;
