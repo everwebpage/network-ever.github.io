@@ -97,7 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 4. Generate the HTML for the profile page
-    // 4. Generate the HTML for the profile page
     function renderProfile(person) {
         const fullName = [person.first_name, person.last_name].filter(Boolean).join(" ").trim();
         const imagePath = getImagePath(person);
@@ -155,19 +154,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         html += `
-                </div>
-            </div>
-        `;
-
-        container.innerHTML = html;
-    }
-        // Placeholder for future CSV columns (bio, research, working papers)
-        html += `
-                    <hr style="margin: 40px 0;">
-                    <h3 style="font-family: 'Sora', sans-serif; font-size: 1.3rem; margin-bottom: 15px; color: var(--oxford-blue);">Biography & Research</h3>
-                    <p style="color: var(--muted-blue);">
-                        <em>Additional information (like biography, contact details, or working papers) will appear here once new columns are added to the CSV database.</em>
-                    </p>
                 </div>
             </div>
         `;
