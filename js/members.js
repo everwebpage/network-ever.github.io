@@ -246,37 +246,8 @@ document.addEventListener("DOMContentLoaded", function () {
             card.appendChild(createDiv("member-affiliation", affiliation));
         }
 
-        const website = String(person.website || "").trim();
-
-        if (website) {
-            const link = document.createElement("a");
-            link.className = "member-website";
-            link.href = website;
-            link.target = "_blank";
-            link.rel = "noopener noreferrer";
-            link.setAttribute(
-                "aria-label",
-                "Open personal website of " +
-                (fullName || "this person") +
-                " in a new window"
-            );
-
-            const label = document.createElement("span");
-            label.textContent = "Personal website";
-
-            const icon = document.createElement("span");
-            icon.className = "member-website-icon";
-            icon.textContent = "↗";
-            icon.setAttribute("aria-hidden", "true");
-
-            link.appendChild(label);
-            link.appendChild(icon);
-            card.appendChild(link);
-        }
-
         return card;
     }
-
     function renderSection(section, people) {
         const config = sectionConfig[section];
         const container = document.getElementById(config.containerId);
