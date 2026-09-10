@@ -97,12 +97,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 4. Generate the HTML for the profile page
+    // 4. Generate the HTML for the profile page
     function renderProfile(person) {
         const fullName = [person.first_name, person.last_name].filter(Boolean).join(" ").trim();
         const imagePath = getImagePath(person);
         const position = person.position || "Member";
         const affiliation = person.affiliation || "";
         const website = person.website || "";
+        
+        // This looks for a new 'working_papers' column in your CSV
+        const workingPapers = person.working_papers || ""; 
         
         document.title = fullName + " - EVER";
 
@@ -130,6 +134,33 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
         }
 
+        // EVER Working Papers Section
+        html += `
+                    <hr style="margin: 40px 0;">
+                    <h3 style="font-family: 'Sora', sans-serif; font-size: 1.3rem; margin-bottom: 15px; color: var(--oxford-blue);">EVER Working Papers</h3>
+        `;
+
+        if (workingPapers) {
+            html += `
+                    <p style="color: var(--muted-blue); line-height: 1.8;">
+                        ${workingPapers}
+                    </p>
+            `;
+        } else {
+            html += `
+                    <p style="color: var(--muted-blue);">
+                        <em>No EVER working papers currently listed for this member.</em>
+                    </p>
+            `;
+        }
+
+        html += `
+                </div>
+            </div>
+        `;
+
+        container.innerHTML = html;
+    }
         // Placeholder for future CSV columns (bio, research, working papers)
         html += `
                     <hr style="margin: 40px 0;">
