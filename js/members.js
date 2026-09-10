@@ -202,6 +202,12 @@ document.addEventListener("DOMContentLoaded", function () {
             .join(" ")
             .trim();
 
+        // 1. Create the new anchor link wrapper and generate the URL ID
+        const profileLink = document.createElement("a");
+        const memberSlug = fullName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        profileLink.href = "profile.html?id=" + memberSlug;
+        profileLink.className = "member-profile-link";
+
         const image = document.createElement("img");
         image.className = "member-photo";
         image.alt = fullName || "EVER member";
@@ -215,11 +221,16 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        card.appendChild(image);
+        // 2. Append the image to the LINK, not the card
+        profileLink.appendChild(image);
 
         if (fullName) {
-            card.appendChild(createDiv("member-name", fullName));
+            // 3. Append the name to the LINK, not the card
+            profileLink.appendChild(createDiv("member-name", fullName));
         }
+
+        // 4. Append the completed clickable link into the card
+        card.appendChild(profileLink);
 
         const title = String(person.position || config.defaultTitle).trim();
         const year = String(person.year || "").trim();
