@@ -1,1 +1,9 @@
-Description of archive contents, i.e., working paper series
+Template-Type: ReDIF-Series 1.0
+Name: Working Papers
+Provider-Name: Economists in Vocational Education Research
+Provider-Homepage: https://www.everglobalnetwork.com
+Provider-Institution: RePEc:edi:vwibech
+Maintainer-Name: Christian Gschwendt
+Maintainer-Email: christian.gschwendt@unibe.ch
+Type: ReDIF-Paper
+Handle: RePEc:cur:wpaper
