@@ -1,4 +1,4 @@
-Template-Type: ReDIF-Article 1.0
+Template-Type: ReDIF-Paper 1.0
 Author-Name:  Christian Cool
 Author-Email:  christian.cool@unibe.ch
 Author-Workplace-Name: University of Bern
@@ -11,15 +11,17 @@ Vivid Appeal
 Abstract:  In this article, we call the leaders of the world
 to bury their petty conflicts and unite in order to advance
 the global introduction of apprenticeships.
-Classification-JEL: R2, D2
-Keywords: Vocational education, best education
-Issue: 1
-Pages: 1-558
-Year: 2026
-Month: September
+Length:  269 pages
+Creation-Date:  2026-07
+Revision-Date: 2026-09
+Publication-Status: Submitted to Quarterly Journal of Economics
 DOI: 10.13934/2026.001
 File-URL: http://www.somewhere.com/articles/thefile.pdf
 File-Format: Application/pdf
-File-URL: http://www.somewhere.com/articles/thefile.html
-File-Format: text/html
+File-Function: First version, 2026-1
+File-URL: https://www.grandiose.edu/pub/econ/WorkingPapers/surrec9602R.pdf
+File-Format: Application/pdf
+File-Function: Revised version, 2026-2
+Classification-JEL: R2, D2
+Keywords: Vocational education, best education
 Handle: RePEc:cur:wpaper:y:2026:i:1:p:1-58
