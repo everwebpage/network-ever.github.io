@@ -96,16 +96,212 @@
     </p>
 
 
-<ul>
-  <li>
-    <strong>No. 1 (2026):</strong> Paper Title Here — Author Name(s).
-    <a href="papers/ever_wp_2026_00.pdf">[PDF]</a>
+html = '''<!-- ===== EVER Working Paper Series: styles ===== -->
+<style>
+.wp-list {
+  list-style: none;
+  margin: 2rem 0;
+  padding: 0;
+  font-family: inherit;
+}
+.wp-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+.wp-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.wp-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  background: #fafafa;
+}
+.wp-header:hover {
+  background: #f0f0f0;
+}
+.wp-meta {
+  flex: 1;
+}
+.wp-number {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+  background: #eaeaea;
+  padding: 0.15rem 0.55rem;
+  border-radius: 12px;
+  margin-bottom: 0.4rem;
+}
+.wp-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0.2rem 0 0.2rem 0;
+  color: #1a1a1a;
+}
+.wp-authors {
+  font-size: 0.92rem;
+  color: #555;
+  margin: 0;
+}
+.wp-authors .author-link {
+  color: #555;
+  text-decoration: none;
+  border-bottom: 1px dotted #999;
+}
+.wp-authors .author-link:hover {
+  color: #0b5fa5;
+  border-bottom-color: #0b5fa5;
+}
+.wp-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+.wp-pdf-btn {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  background: #0b5fa5;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.wp-pdf-btn:hover {
+  background: #084a82;
+}
+.wp-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wp-toggle svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s ease;
+  stroke: #555;
+}
+.wp-item.open .wp-toggle svg {
+  transform: rotate(180deg);
+}
+.wp-abstract-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: #fff;
+}
+.wp-item.open .wp-abstract-wrap {
+  max-height: 600px;
+}
+.wp-abstract {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #333;
+  border-top: 1px solid #eee;
+  margin-top: 0;
+}
+.wp-abstract-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #888;
+  display: block;
+  margin: 0.9rem 0 0.4rem 0;
+}
+.wp-jel {
+  font-size: 0.82rem;
+  color: #777;
+  margin-top: 0.6rem;
+}
+</style>
+
+<!-- ===== EVER Working Paper Series: list ===== -->
+<ul class="wp-list" id="wp-list">
+
+  <li class="wp-item">
+    <div class="wp-header" onclick="toggleWP(this)">
+      <div class="wp-meta">
+        <span class="wp-number">No. 2 &middot; 2026</span>
+        <h3 class="wp-title">Example Paper Title Goes Here</h3>
+        <p class="wp-authors">Jane Doe &middot; John Smith</p>
+      </div>
+      <div class="wp-actions">
+        <a class="wp-pdf-btn" href="papers/ever-wp-2026-02.pdf" target="_blank" rel="noopener" onclick="event.stopPropagation()">PDF</a>
+        <button class="wp-toggle" aria-label="Toggle abstract">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="wp-abstract-wrap">
+      <div class="wp-abstract">
+        <span class="wp-abstract-label">Abstract</span>
+        Replace this paragraph with the paper's actual abstract text. Keep it to a few sentences summarizing data, method, and main findings, matching what is registered in the RePEc paper template.
+        <div class="wp-jel">JEL: J24, I26</div>
+      </div>
+    </div>
   </li>
-  <li>
-    <strong>No. 2 (2026):</strong> Another Paper Title — Author Name(s).
-    <a href="papers/ever-wp-2026-02.pdf">[PDF]</a>
+
+  <li class="wp-item">
+    <div class="wp-header" onclick="toggleWP(this)">
+      <div class="wp-meta">
+        <span class="wp-number">No. 1 &middot; 2026</span>
+        <h3 class="wp-title">Another Example Paper Title</h3>
+        <p class="wp-authors">Jane Doe</p>
+      </div>
+      <div class="wp-actions">
+        <a class="wp-pdf-btn" href="papers/ever-wp-2026-01.pdf" target="_blank" rel="noopener" onclick="event.stopPropagation()">PDF</a>
+        <button class="wp-toggle" aria-label="Toggle abstract">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="wp-abstract-wrap">
+      <div class="wp-abstract">
+        <span class="wp-abstract-label">Abstract</span>
+        Replace this paragraph with the paper's actual abstract text.
+        <div class="wp-jel">JEL: J21</div>
+      </div>
+    </div>
   </li>
+
 </ul>
+
+<!-- ===== EVER Working Paper Series: behavior ===== -->
+<script>
+function toggleWP(headerEl) {
+  var item = headerEl.closest('.wp-item');
+  var alreadyOpen = item.classList.contains('open');
+  document.querySelectorAll('#wp-list .wp-item.open').forEach(function(el) {
+    if (el !== item) el.classList.remove('open');
+  });
+  item.classList.toggle('open', !alreadyOpen);
+}
+</script>
+'''
+with open('wp_list_snippet.html', 'w') as f:
+    f.write(html)
+print(len(html), "chars written")
                     
 </div>
             </div>
