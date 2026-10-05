@@ -96,7 +96,7 @@
     </p>
 
 
-html = '''<!-- ===== EVER Working Paper Series: styles ===== -->
+
 <style>
 .wp-list {
   list-style: none;
@@ -238,12 +238,12 @@ html = '''<!-- ===== EVER Working Paper Series: styles ===== -->
   <li class="wp-item">
     <div class="wp-header" onclick="toggleWP(this)">
       <div class="wp-meta">
-        <span class="wp-number">No. 2 &middot; 2026</span>
-        <h3 class="wp-title">Example Paper Title Goes Here</h3>
-        <p class="wp-authors">Jane Doe &middot; John Smith</p>
+        <span class="wp-number">#1 &middot; 2026</span>
+        <h3 class="wp-title">Imperfect Self-knowledge about Skills and Skill Mismatch</h3>
+        <p class="wp-authors">Enzo Brox, Daniel Goller, Stefan C. Wolter</p>
       </div>
       <div class="wp-actions">
-        <a class="wp-pdf-btn" href="papers/ever-wp-2026-02.pdf" target="_blank" rel="noopener" onclick="event.stopPropagation()">PDF</a>
+        <a class="wp-pdf-btn" href="papers/ever_wp_2026_00.pdf" target="_blank" rel="noopener" onclick="event.stopPropagation()">PDF</a>
         <button class="wp-toggle" aria-label="Toggle abstract">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
@@ -254,8 +254,8 @@ html = '''<!-- ===== EVER Working Paper Series: styles ===== -->
     <div class="wp-abstract-wrap">
       <div class="wp-abstract">
         <span class="wp-abstract-label">Abstract</span>
-        Replace this paragraph with the paper's actual abstract text. Keep it to a few sentences summarizing data, method, and main findings, matching what is registered in the RePEc paper template.
-        <div class="wp-jel">JEL: J24, I26</div>
+        Why do people sort into poorly fitting occupations? This paper shows that imperfect self-knowledge about skills is an important source of skill mismatch at labor market entry. We use unique data from standardized professional aptitude tests linked to administrative records on educational trajectories and early labor market outcomes in Switzerland. The data allow us to observe objective skills and subjective skill beliefs for many productivity-relevant skills in a high-stakes setting. We document large differences among individuals in how well their beliefs align with their skills. Imperfect self-knowledge predicts misaligned occupational aspirations, higher realized skill mismatch, and a higher probability of dropout. Guided by a Roy-style model of occupational choice with imperfect self-knowledge, we interpret these findings as evidence that distorted self-assessments at the school-to-work transition contribute to the misallocation of talent.
+        <div class="wp-jel">JEL: D83, J24, J41 </div>
       </div>
     </div>
   </li>
@@ -263,12 +263,12 @@ html = '''<!-- ===== EVER Working Paper Series: styles ===== -->
   <li class="wp-item">
     <div class="wp-header" onclick="toggleWP(this)">
       <div class="wp-meta">
-        <span class="wp-number">No. 1 &middot; 2026</span>
-        <h3 class="wp-title">Another Example Paper Title</h3>
-        <p class="wp-authors">Jane Doe</p>
+        <span class="wp-number">No. -1 &middot; 2026</span>
+        <h3 class="wp-title">Generative AI and Career Choices </h3>
+        <p class="wp-authors">Christian Gschwendt, Martina Viarengo, Thea Zöllner</p>
       </div>
       <div class="wp-actions">
-        <a class="wp-pdf-btn" href="papers/ever-wp-2026-01.pdf" target="_blank" rel="noopener" onclick="event.stopPropagation()">PDF</a>
+        <a class="wp-pdf-btn" href="papers/ever_wp_2026_-1.pdf" target="_blank" rel="noopener" onclick="event.stopPropagation()">PDF</a>
         <button class="wp-toggle" aria-label="Toggle abstract">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
@@ -279,8 +279,8 @@ html = '''<!-- ===== EVER Working Paper Series: styles ===== -->
     <div class="wp-abstract-wrap">
       <div class="wp-abstract">
         <span class="wp-abstract-label">Abstract</span>
-        Replace this paragraph with the paper's actual abstract text.
-        <div class="wp-jel">JEL: J21</div>
+        The economic impact of technological change will critically depend on how future workers invest in their human capital. Yet, little is known about how future workers themselves evaluate and choose their educational and occupational paths in light of emerging technologies. This paper examines how adolescents currently at the schoolto-work transition stage value working with generative artificial intelligence (GenAI) in their future occupations, and how automation risk and opportunities for continuing education shape these preferences. We field a discrete-choice experiment among a nationally representative sample of over 7,000 Swiss adolescents aged around 15. We find that adolescents generally exhibit an aversion to collaborating with GenAI at work, with females consistently more averse than males. However, preferences are nuanced: adolescents welcome greater GenAI collaboration, provided that GenAI usage levels remain moderate and that it is not accompanied by increases in jobautomation risk. Finally, continuing education opportunities in occupations improve attitudes towards working with GenAI across genders. Our results challenge simple narratives of technology acceptance or rejection, revealing that adolescents’ willingness to work with GenAI depends on how it is implemented — its intensity, associated displacement risks, and accompanying skill development — rather than the technology itself. Our findings suggest that the way future workers value GenAI collaboration in their career choices critically depends.
+        <div class="wp-jel">JEL: I24, J24, O33</div>
       </div>
     </div>
   </li>
@@ -299,9 +299,6 @@ function toggleWP(headerEl) {
 }
 </script>
 '''
-with open('wp_list_snippet.html', 'w') as f:
-    f.write(html)
-print(len(html), "chars written")
                     
 </div>
             </div>
