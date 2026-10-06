@@ -1,0 +1,79 @@
+{
+  "Uschi Backes-Gellner": {
+    "url": "profile.html?id=prof-dr-dr-h-c-uschi-backes-gellner",
+    "slug": "prof-dr-dr-h-c-uschi-backes-gellner",
+    "affiliation": "University of Zurich",
+    "image": "uschi-backes.png",
+    "external_website": "https://www.business.uzh.ch/de/research/professorships/emap/team/uschibackes.html"
+  },
+  "Sandra McNally": {
+    "url": "profile.html?id=prof-sandra-mcnally",
+    "slug": "prof-sandra-mcnally",
+    "affiliation": "University of Surrey",
+    "image": "sandra-mcnally.jpg",
+    "external_website": "https://www.surrey.ac.uk/people/sandra-mcnally"
+  },
+  "Samuel Mühlemann": {
+    "url": "profile.html?id=prof-dr-samuel-m-hlemann",
+    "slug": "prof-dr-samuel-m-hlemann",
+    "affiliation": "LMU München",
+    "image": "samuel-muehlemann.jpg",
+    "external_website": "https://www.som.lmu.de/wipaed/de/team/kontaktseite/samuel-muehlemann-30f8a8ae.html"
+  },
+  "Harald Pfeifer": {
+    "url": "profile.html?id=prof-dr-harald-pfeifer",
+    "slug": "prof-dr-harald-pfeifer",
+    "affiliation": "Maastricht University and BiBB",
+    "image": "harald-pfeifer.png",
+    "external_website": "https://www.maastrichtuniversity.nl/h-pfeifer"
+  },
+  "Stefan C. Wolter": {
+    "url": "profile.html?id=prof-dr-stefan-c-wolter",
+    "slug": "prof-dr-stefan-c-wolter",
+    "affiliation": "University of Bern and SCCRE",
+    "image": "stefan-wolter.jpg",
+    "external_website": "https://www.skbf-csre.ch/skbf/team/stefan-wolter/"
+  },
+  "Claudio Schilter": {
+    "url": "profile.html?id=prof-dr-claudio-schilter",
+    "slug": "prof-dr-claudio-schilter",
+    "affiliation": "University of Bern",
+    "image": "claudio-schilter.jpg",
+    "external_website": "https://www.claudioschilter.com"
+  },
+  "Luke Smith": {
+    "url": "profile.html?id=dr-luke-smith",
+    "slug": "dr-luke-smith",
+    "affiliation": "University of Nowhere",
+    "image": "",
+    "external_website": ""
+  },
+  "Roberto Sartore": {
+    "url": "profile.html?id=roberto-sartore",
+    "slug": "roberto-sartore",
+    "affiliation": "University of Bern",
+    "image": "roberto-sartore.png",
+    "external_website": "https://www.linkedin.com/in/roberto-sartore-9a664a1b2/"
+  },
+  "Enzo Brox": {
+    "url": "profile.html?id=dr-enzo-brox",
+    "slug": "dr-enzo-brox",
+    "affiliation": "University of Bern",
+    "image": "enzo-brox.jpg",
+    "external_website": "https://sites.google.com/view/ebrox/home?pli=1&authuser=0"
+  },
+  "Thea Zöllner": {
+    "url": "profile.html?id=dr-thea-z-llner",
+    "slug": "dr-thea-z-llner",
+    "affiliation": "University of Bern",
+    "image": "thea-zoellner.png",
+    "external_website": "https://www.theazoellner.com/"
+  },
+  "Christian Gschwendt": {
+    "url": "profile.html?id=dr-christian-gschwendt",
+    "slug": "dr-christian-gschwendt",
+    "affiliation": "University of Bern",
+    "image": "christian-gschwendt.jpg",
+    "external_website": "https://sites.google.com/view/christian-gschwendt"
+  }
+}
