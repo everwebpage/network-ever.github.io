@@ -1,1 +1,37 @@
+name: Build working-paper and member data
 
+on:
+  push:
+    paths:
+      - "RePEc/**"
+      - "data/members.csv"
+      - "scripts/build_papers.py"
+      - "scripts/build_members.py"
+  workflow_dispatch: {}   # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write   # needed so the workflow can commit the generated files back
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate data/papers.json from RePEc/*.rdf
+        run: python3 scripts/build_papers.py --repec-dir RePEc --out data/papers.json
+
+      - name: Generate data/members.json from data/members.csv
+        run: python3 scripts/build_members.py --csv data/members.csv --out data/members.json
+
+      - name: Commit updated data files (if anything changed)
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-update data/papers.json and data/members.json"
+          file_pattern: "data/papers.json data/members.json"
