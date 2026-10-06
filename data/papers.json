@@ -1,0 +1,22 @@
+[
+  {
+    "handle": "RePEc:aaa:wpaper:0",
+    "number": 0,
+    "year": 2026,
+    "title": "Imperfect Self-knowledge about Skills and Skill Mismatch",
+    "authors": ["Enzo Brox", "Daniel Goller", "Stefan C. Wolter"],
+    "abstract": "Why do people sort into poorly fitting occupations? This paper shows that imperfect self-knowledge about skills is an important source of skill mismatch at labor market entry. We use unique data from standardized professional aptitude tests linked to administrative records on educational trajectories and early labor market outcomes in Switzerland. The data allow us to observe objective skills and subjective skill beliefs for many productivity-relevant skills in a high-stakes setting. We document large differences among individuals in how well their beliefs align with their skills. Imperfect self-knowledge predicts misaligned occupational aspirations, higher realized skill mismatch, and a higher probability of dropout. Guided by a Roy-style model of occupational choice with imperfect self-knowledge, we interpret these findings as evidence that distorted self-assessments at the school-to-work transition contribute to the misallocation of talent.",
+    "jel": "D83, J24, J41",
+    "file_url": "wpapers/ever_wp_2026_00.pdf"
+  },
+  {
+    "handle": "RePEc:aaa:wpaper:-1",
+    "number": -1,
+    "year": 2026,
+    "title": "Generative AI and Career Choices",
+    "authors": ["Christian Gschwendt", "Martina Viarengo", "Thea Zöllner"],
+    "abstract": "The economic impact of technological change will critically depend on how future workers invest in their human capital. Yet, little is known about how future workers themselves evaluate and choose their educational and occupational paths in light of emerging technologies. This paper examines how adolescents currently at the school-to-work transition stage value working with generative artificial intelligence (GenAI) in their future occupations, and how automation risk and opportunities for continuing education shape these preferences. We field a discrete-choice experiment among a nationally representative sample of over 7,000 Swiss adolescents aged around 15. We find that adolescents generally exhibit an aversion to collaborating with GenAI at work, with females consistently more averse than males. However, preferences are nuanced: adolescents welcome greater GenAI collaboration, provided that GenAI usage levels remain moderate and that it is not accompanied by increases in job-automation risk. Finally, continuing education opportunities in occupations improve attitudes towards working with GenAI across genders. Our results challenge simple narratives of technology acceptance or rejection, revealing that adolescents' willingness to work with GenAI depends on how it is implemented — its intensity, associated displacement risks, and accompanying skill development — rather than the technology itself.",
+    "jel": "I24, J24, O33",
+    "file_url": "wpapers/ever_wp_2026_-1.pdf"
+  }
+]
